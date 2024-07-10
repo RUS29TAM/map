@@ -1,0 +1,87 @@
+.svg {
+    /*animation: fill 0.5s ease forwards 3.5s;*/
+    animation: line-anim 5.5s ease forwards 0.2s, line-29 0.5ms linear forwards .1ms, fill 0.5s ease forwards 3.5s;;
+
+    filter: hue-rotate(30deg);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.path {
+    stroke: gray;
+    filter: url(#highlight);
+}
+
+.path:hover {
+    stroke-dasharray: 100%;
+    stroke-dashoffset: 0;
+    animation: line-anim 3.5s ease forwards 0.2s;
+    /*width: 900px;*/
+    /*height: 900px;*/
+    stroke-width: 1;
+    filter: url(#highlight);
+
+}
+
+.path:hover:nth-child(5) {
+    fill: #00ff10;
+}
+
+@keyframes line-anim {
+    from {
+        stroke-dashoffset: 100%;
+        fill: transparent;
+    }
+
+    to {
+        stroke-dashoffset: 0;
+        fill: #343434;
+        stroke: #00d9ff;
+        stroke-width: 1;
+    }
+}
+
+@keyframes line-29 {
+    from {
+        fill: transparent;
+        /*transform-origin: center center;*/
+    }
+    to {
+        fill: #343434;
+        stroke: #00d9ff;
+        stroke-width: 1;
+
+    }
+}
+
+@keyframes fill {
+    from {
+        fill: transparent;
+    }
+    to {
+        fill: #eeeeee;
+    }
+}
+
+/*.path.highlight {*/
+/*    fill: #7b00ff;*/
+/*}*/
+
+/*.path.dimmed {*/
+/*    display: none*/
+/*}*/
+
+.dot {
+    fill: #4aa1d1;
+    fillOpacity: 1;
+    fillRule: evenodd;
+    stroke: #ffffff;
+    strokeWidth: 0.949;
+    strokeLinecap: butt;
+    strokeLinejoin: miter;
+    strokeMiterlimit: 10;
+    strokeDasharray: none;
+    strokeOpacity: 1
+}
+
