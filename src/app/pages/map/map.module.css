@@ -1,61 +1,40 @@
 .svg {
-    /*animation: fill 0.5s ease forwards 3.5s;*/
-    animation: line-anim 5.5s ease forwards 0.2s, line-29 0.5ms linear forwards .1ms, fill 0.5s ease forwards 3.5s;;
-
-    filter: hue-rotate(30deg);
+    animation: filling 2.2s ease forwards;
     width: 100vw;
     height: 100vh;
     display: flex;
 }
 
 .path {
-    stroke: gray;
-    filter: url(#highlight);
+    stroke-dashoffset: 0;
+    stroke: #4aa1d1;
+    stroke-width: 1;
+
 }
 
 .path:hover {
     stroke-dasharray: 100%;
     stroke-dashoffset: 0;
-    animation: line-anim 3.5s ease forwards 0.2s;
-    /*width: 900px;*/
-    /*height: 900px;*/
+    animation: line-anim 3.5s ease;
     stroke-width: 1;
     filter: url(#highlight);
-
 }
 
-.path:hover:nth-child(5) {
-    fill: #00ff10;
-}
 
 @keyframes line-anim {
     from {
         stroke-dashoffset: 100%;
         fill: transparent;
+        stroke-width: 2;
     }
-
     to {
         stroke-dashoffset: 0;
-        fill: #343434;
-        stroke: #00d9ff;
-        stroke-width: 1;
+        fill: #b8cfe5;
+        stroke: #4aa1d1;
     }
 }
 
-@keyframes line-29 {
-    from {
-        fill: transparent;
-        /*transform-origin: center center;*/
-    }
-    to {
-        fill: #343434;
-        stroke: #00d9ff;
-        stroke-width: 1;
-
-    }
-}
-
-@keyframes fill {
+@keyframes filling {
     from {
         fill: transparent;
     }
@@ -64,24 +43,43 @@
     }
 }
 
-/*.path.highlight {*/
-/*    fill: #7b00ff;*/
-/*}*/
+.path.highlight {
+    fill: #b8cfe5;
+}
 
-/*.path.dimmed {*/
-/*    display: none*/
-/*}*/
+.path.dimmed {
+    animation: visible-map 3.5s ease forwards 0.2s;
+}
+
+@keyframes visible-map {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 0;
+    }
+    25% {
+
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 
 .dot {
     fill: #4aa1d1;
-    fillOpacity: 1;
-    fillRule: evenodd;
+    fill-opacity: 1;
+    fill-rule: evenodd;
     stroke: #ffffff;
-    strokeWidth: 0.949;
-    strokeLinecap: butt;
-    strokeLinejoin: miter;
-    strokeMiterlimit: 10;
-    strokeDasharray: none;
-    strokeOpacity: 1
+    stroke-width: 0.949;
+    stroke-linecap: butt;
+    stroke-linejoin: miter;
+    stroke-miterlimit: 10;
+    stroke-dasharray: none;
+    stroke-opacity: 1
 }
 
