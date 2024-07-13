@@ -1,0 +1,176 @@
+.wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 820px) {
+    .wrapper {
+        flex-direction: column;
+    }
+
+    .svg {
+        /*width: 100%;*/
+        height: 65%;
+        margin: 0 auto;
+    }
+
+    .rightElement {
+        align-items: start;
+    }
+}
+
+.leftElement {
+    width: 150%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contentRight {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fbfbff;
+    font-size: 2em;
+    padding: 0 20px;
+
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s, transform 0.5s;
+    overflow: hidden;
+}
+
+.contentRight.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.rightElement {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+
+    /*width: 300px;*/
+}
+
+.svg {
+    animation: filling 2.2s ease forwards;
+    height: 100vh;
+    padding: 50px;
+    display: flex;
+
+}
+
+.path {
+    stroke-dashoffset: 0;
+    stroke: #4aa1d1;
+    stroke-width: 1;
+
+    transition: transform 2.5s ease-in-out;
+    cursor: pointer;
+}
+
+.expanded {
+    transform-origin: 50% 50%;
+    transform: scale(2);/* Adjust the scale as needed */
+    /*transform: matrix(2.6666666, 0, 0, -2.6666666, 679.35381, 686.88528);*/
+}
+
+.path:hover {
+    stroke-dasharray: 100%;
+    stroke-dashoffset: 0;
+    animation: line-anim 3.5s ease;
+    stroke-width: 1;
+    filter: url(#highlight);
+}
+
+
+@keyframes line-anim {
+    from {
+        stroke-dashoffset: 100%;
+        fill: transparent;
+        stroke-width: 2;
+    }
+    to {
+        vector-effect: non-scaling-stroke;
+        stroke-dashoffset: 0;
+        fill: #b8cfe5;
+        stroke: #4aa1d1;
+    }
+}
+
+@keyframes filling {
+    from {
+        fill: transparent;
+    }
+    to {
+        fill: #eeeeee;
+    }
+}
+
+.path.highlight {
+    fill: #b8cfe5;
+}
+
+.path.dimmed {
+    animation: visible-map 3.5s ease forwards 0.2s;
+}
+
+@keyframes visible-map {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 0;
+    }
+    25% {
+
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.dot {
+    fill: #4aa1d1;
+    fill-opacity: 1;
+    fill-rule: evenodd;
+    stroke: #ffffff;
+    stroke-width: 0.949;
+    stroke-linecap: butt;
+    stroke-linejoin: miter;
+    stroke-miterlimit: 10;
+    stroke-dasharray: none;
+    stroke-opacity: 1
+}
+
+.textDistrict {
+    font-variant-caps: normal;
+    font-variant-east-asian: normal;
+    font-variant-ligatures: normal;
+    font-variant-numeric: normal;
+    paint-order: markers fill stroke;
+}
+
+.textCity {
+    font-variant-caps: normal;
+    font-variant-east-asian: normal;
+    font-variant-ligatures: normal;
+    font-variant-numeric: normal
+}
+
