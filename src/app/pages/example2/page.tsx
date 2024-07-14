@@ -43,45 +43,59 @@ const Page = () => {
     useEffect(() => {
         const paths = pathsRef.current;
 
-        const handleMouseEnter = (index: number) => {
+        const handleMouseClick = (index: number) => {
             paths.forEach((path, i) => {
                 if (path) {
                     if (i === index) {
-                        path.classList.add(styles.highlight);
-                        path.classList.remove(styles.dimmed);
+                        path.style.fill = '#b8cfe5'
                     } else {
-                        path.classList.add(styles.dimmed);
-                        path.classList.remove(styles.highlight);
+                        path.style.fill = '#eeeeee'
                     }
                 }
             });
         };
+        // const handleMouseEnter = (index: number) => {
+        //     paths.forEach((path, i) => {
+        //         if (path) {
+        //             if (i === index) {
+        //                 path.classList.add(styles.highlight);
+        //                 path.classList.remove(styles.dimmed);
+        //             } else {
+        //                 path.classList.add(styles.dimmed);
+        //                 path.classList.remove(styles.highlight);
+        //             }
+        //         }
+        //     });
+        // };
 
-        const handleMouseLeave = () => {
-            paths.forEach((path) => {
-                if (path) {
-                    path.classList.remove(styles.highlight);
-                    path.classList.remove(styles.dimmed);
-                }
-            });
-        };
+        // const handleMouseLeave = () => {
+        //     paths.forEach((path) => {
+        //         if (path) {
+        //             path.classList.remove(styles.highlight);
+        //             path.classList.remove(styles.dimmed);
+        //         }
+        //     });
+        // };
 
         paths.forEach((path, index) => {
             if (path) {
-                path.addEventListener('mouseenter', () => handleMouseEnter(index));
-                path.addEventListener('mouseleave', handleMouseLeave);
+                // path.addEventListener('mouseenter', () => handleMouseEnter(index));
+                // path.addEventListener('mouseleave', handleMouseLeave);
+                path.addEventListener("click", () => handleMouseClick(index))
             }
         });
 
         return () => {
             paths.forEach((path, index) => {
                 if (path) {
-                    path.removeEventListener('mouseenter', () => handleMouseEnter(index));
-                    path.removeEventListener('mouseleave', handleMouseLeave);
+                    // path.removeEventListener('mouseenter', () => handleMouseEnter(index));
+                    // path.removeEventListener('mouseleave', handleMouseLeave);
+                    path.removeEventListener("click", () => handleMouseClick(index))
+
                 }
             });
         };
-    }, [pathsRef]);
+    }, []);
 
 
     return (
@@ -151,8 +165,8 @@ const Page = () => {
                             <text x="22.451637" y="254.53989" className={styles.textDistrict} xmlSpace="preserve"><tspan x="22.451637" y="254.53989" >КАРГОПОЛЬСКИЙ ОКРУГ</tspan></text>
                             <text x="53.199284" y="241.12262" className={styles.textDistrict} xmlSpace="preserve"><tspan x="53.199284" y="241.12262" >НЯНДОМСКИЙ ОКРУГ</tspan></text>
                             <text x="30.885956" y="214.79076" className={styles.textDistrict} xmlSpace="preserve"><tspan x="30.885956" y="214.79076" >ПЛЕСЕЦКИЙ ОКРУГ</tspan></text>
-                            <text x="16.378139" y="190.61589" className={styles.textDistrict} xmlSpace="preserve"><tspan x="16.378139" y="190.61589" fontFamily="Verdana" fontSize="1.666px" fontStyle="italic" className={styles.textDistrict} >ОНЕЖСКИЙ РАЙОН</tspan></text>
-                            <text x="68.041176" y="142.25879" className={styles.textDistrict} xmlSpace="preserve"><tspan x="68.041176" y="142.25879" fontFamily="Verdana" fontSize="1.666px" fontStyle="italic" className={styles.textDistrict} >ПРИМОРСКИЙ ОКРУГ</tspan></text>
+                            <text x="16.378139" y="190.61589" className={styles.textDistrict} xmlSpace="preserve"><tspan x="16.378139" y="190.61589" >ОНЕЖСКИЙ РАЙОН</tspan></text>
+                            <text x="68.041176" y="142.25879" className={styles.textDistrict} xmlSpace="preserve"><tspan x="68.041176" y="142.25879" >ПРИМОРСКИЙ ОКРУГ</tspan></text>
                             <text x="119.89401" y="189.22874" className={styles.textDistrict} xmlSpace="preserve"><tspan x="119.89401" y="189.22874" >ПИНЕЖСКИЙ ОКРУГ</tspan></text>
                             <text x="153.13994" y="159.15996" className={styles.textDistrict} xmlSpace="preserve"><tspan x="153.13994" y="159.15996" >ЛЕШУКОНСКИЙ ОКРУГ</tspan></text>
                             <text x="112.99018" y="135.02589" className={styles.textDistrict} xmlSpace="preserve"><tspan x="112.99018" y="135.02589" >МЕЗЕНСКИЙ ОКРУГ</tspan></text>
@@ -189,7 +203,7 @@ const Page = () => {
                 {selectedContent ? (
                     <div className={`${styles.contentRight} ${showContent ? styles.show : ''}`}>{selectedContent}</div>
                 ) : (
-                    <div className={styles.contentRight}>Выберите мцниципальное образование</div>
+                    <div className={`${styles.contentRightStart} ${showContent ? styles.show : ''}`}>Выберите мцниципальное образование</div>
                 )}
             </div>
         </div>
