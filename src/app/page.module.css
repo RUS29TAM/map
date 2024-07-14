@@ -1,9 +1,11 @@
 .main {
   display: flex;
-  padding: 50px;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  width: 100%;
+  margin: 0 auto;
+  height: 100vh;
+  width: 1140px;
+  max-width: 80%;
+  background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
 }
 
