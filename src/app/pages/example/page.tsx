@@ -4,24 +4,24 @@ import styles from './example.module.css'
 
 const data = [
     { id: 0, content: 'Content for Вилегодский округ' },
-    { id: 1, content: 'Content for Вельский район' },
-    { id: 2, content: 'Content for Коношский район' },
-    { id: 3, content: 'Content for Пинежский район' },
-    { id: 4, content: 'Content for Мезенский район' },
-    { id: 5, content: 'Content for Котласский район' },
-    { id: 6, content: 'Content for Верхнетоемский район' },
-    { id: 7, content: 'Content for Красноборский район' },
-    { id: 8, content: 'Content for Устьянский район' },
-    { id: 9, content: 'Content for Онежский район' },
-    { id: 10, content: 'Content for Холмогорский район' },
-    { id: 11, content: 'Content for Каргопольский район' },
-    { id: 12, content: 'Content for Няндомский район' },
-    { id: 13, content: 'Content for Плесецкий район' },
-    { id: 14, content: 'Content for Шенкурский район' },
-    { id: 15, content: 'Content for Ленский район' },
-    { id: 16, content: 'Content for Ленский район' },
-    { id: 17, content: 'Content for Виноградовский район' },
-    { id: 18, content: 'Content for Приморский район' },
+    { id: 1, content: 'Content for Ленский район' },
+    { id: 2, content: 'Content for Котласский округ' },
+    { id: 3, content: 'Content for Красноборский округ' },
+    { id: 4, content: 'Content for Устьянский округ' },
+    { id: 5, content: 'Content for Вельский район' },
+    { id: 6, content: 'Content for Коношский район' },
+    { id: 7, content: 'Content for Каргопольский округ' },
+    { id: 8, content: 'Content for Няндомский округ' },
+    { id: 9, content: 'Content for Шенкурский округ' },
+    { id: 10, content: 'Content for Верхнетоемский округ' },
+    { id: 11, content: 'Content for Плесецкий округ' },
+    { id: 12, content: 'Content for Виноградовский округ' },
+    { id: 13, content: 'Content for Пинежский округ' },
+    { id: 14, content: 'Content for Холмогорский округ' },
+    { id: 15, content: 'Content for Онежский район' },
+    { id: 16, content: 'Content for Лешуконский округ' },
+    { id: 17, content: 'Content for Мезенский округ' },
+    { id: 18, content: 'Content for Приморский округ' },
 ];
 const Page = () => {
     const [selectedContent, setSelectedContent] = useState('');
@@ -150,7 +150,7 @@ const Page = () => {
                             <path className={`${styles.dot}`} transform="matrix(.44578 0 0 -.42305 66.303 161.24)" d="m0 0c0-1.512-1.243-2.738-2.776-2.738-1.534 0-2.777 1.226-2.777 2.738s1.243 2.738 2.777 2.738c1.533 0 2.776-1.226 2.776-2.738" clipPath="url(#clipPath180)" />
                             <path className={`${styles.dot}`} transform="matrix(.44578 0 0 -.42305 71.602 161.78)" d="m0 0c0-1.511-1.243-2.738-2.776-2.738-1.534 0-2.777 1.227-2.777 2.738 0 1.512 1.243 2.738 2.777 2.738 1.533 0 2.776-1.226 2.776-2.738" clipPath="url(#clipPath178)" />
                         </g>
-                        <g id={'district'} fill="#4aa1d1" fontFamily="Verdana" fontSize="1.666px" fontStyle="italic" strokeWidth=".18944" >
+                            <g id={'district'} fill="#4aa1d1" fontFamily="Verdana" fontSize="1.666px" fontStyle="italic" strokeWidth=".18944" >
                             <text x="81.020119" y="242.22002" className={styles.textDistrict} xmlSpace="preserve"><tspan x="81.020119" y="242.22002" >ШЕНКУРСКИЙ ОКРУГ</tspan></text>
                             <text x="89.348816" y="210.37416" className={styles.textDistrict} xmlSpace="preserve"><tspan x="89.348816" y="210.37416" >ВИНОГРАДОВСКИЙ ОКРУГ</tspan></text>
                             <text x="77.330307" y="185.24583" className={styles.textDistrict} xmlSpace="preserve"><tspan x="77.330307" y="185.24583" >ХОЛМОГОРСКИЙ ОКРУГ</tspan></text>
