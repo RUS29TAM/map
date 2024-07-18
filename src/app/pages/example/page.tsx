@@ -35,6 +35,7 @@ const Page = () => {
             setShowContent(true);
         }, 200);
     };
+
     const pathsRef = useRef<(SVGPathElement | null)[]>([]);
 
     const setRef = (index: number) => (el: SVGPathElement | null): void => {
