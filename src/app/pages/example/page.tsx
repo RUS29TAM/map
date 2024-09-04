@@ -1,37 +1,17 @@
 'use client'
 import React, {useEffect, useRef, useState} from 'react';
-import styles from './example.module.css'
+import styles from './example.module.css';
+import mapsData from "@/app/utils/maps-data";
 
-const data = [
-    { id: 0, content: 'Content for Вилегодский округ' },
-    { id: 1, content: 'Content for Ленский район' },
-    { id: 2, content: 'Content for Котласский округ' },
-    { id: 3, content: 'Content for Красноборский округ' },
-    { id: 4, content: 'Content for Устьянский округ' },
-    { id: 5, content: 'Content for Вельский район' },
-    { id: 6, content: 'Content for Коношский район' },
-    { id: 7, content: 'Content for Каргопольский округ' },
-    { id: 8, content: 'Content for Няндомский округ' },
-    { id: 9, content: 'Content for Шенкурский округ' },
-    { id: 10, content: 'Content for Верхнетоемский округ' },
-    { id: 11, content: 'Content for Плесецкий округ' },
-    { id: 12, content: 'Content for Виноградовский округ' },
-    { id: 13, content: 'Content for Пинежский округ' },
-    { id: 14, content: 'Content for Холмогорский округ' },
-    { id: 15, content: 'Content for Онежский район' },
-    { id: 16, content: 'Content for Лешуконский округ' },
-    { id: 17, content: 'Content for Мезенский округ' },
-    { id: 18, content: 'Content for Приморский округ' },
-];
 const Page = () => {
-    const [selectedContent, setSelectedContent] = useState('');
+    const [selectedContent, setSelectedContent] = useState<React.ReactNode>(null);
     const [showContent, setShowContent] = useState(false);
-    const [expandedIndex, setExpandedIndex] = useState(null);
-    const handleItemClick = (index: any) => {
-        setExpandedIndex(expandedIndex === index ? null : index);
+    const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+    const handleItemClick = (index: number) => {
+        setExpandedIndex(prevIndex => prevIndex === index ? 0 : index);
         setShowContent(false);
         setTimeout(() => {
-            setSelectedContent(data[index].content);
+            setSelectedContent(mapsData[index].content);
             setShowContent(true);
         }, 200);
     };
@@ -41,63 +21,28 @@ const Page = () => {
     const setRef = (index: number) => (el: SVGPathElement | null): void => {
         pathsRef.current[index] = el;
     };
+
     useEffect(() => {
         const paths = pathsRef.current;
 
         const handleMouseClick = (index: number) => {
             paths.forEach((path, i) => {
                 if (path) {
-                    if (i === index) {
-                        path.style.fill = '#b8cfe5'
-                    } else {
-                        path.style.fill = '#eeeeee'
-                    }
+                    path.style.fill = i === index ? '#b8cfe5' : '#eeeeee';
                 }
             });
         };
-        // const handleMouseEnter = (index: number) => {
-        //     paths.forEach((path, i) => {
-        //         if (path) {
-        //             if (i === index) {
-        //                 path.classList.add(styles.highlight);
-        //                 path.classList.remove(styles.dimmed);
-        //             } else {
-        //                 path.classList.add(styles.dimmed);
-        //                 path.classList.remove(styles.highlight);
-        //             }
-        //         }
-        //     });
-        // };
-
-        // const handleMouseLeave = () => {
-        //     paths.forEach((path) => {
-        //         if (path) {
-        //             path.classList.remove(styles.highlight);
-        //             path.classList.remove(styles.dimmed);
-        //         }
-        //     });
-        // };
 
         paths.forEach((path, index) => {
             if (path) {
-                // path.addEventListener('mouseenter', () => handleMouseEnter(index));
-                // path.addEventListener('mouseleave', handleMouseLeave);
-                path.addEventListener("click", () => handleMouseClick(index))
+                const onClick = () => handleMouseClick(index);
+                path.addEventListener("click", onClick);
+                return () => {
+                    path.removeEventListener("click", onClick);
+                };
             }
         });
-
-        return () => {
-            paths.forEach((path, index) => {
-                if (path) {
-                    // path.removeEventListener('mouseenter', () => handleMouseEnter(index));
-                    // path.removeEventListener('mouseleave', handleMouseLeave);
-                    path.removeEventListener("click", () => handleMouseClick(index))
-
-                }
-            });
-        };
     }, []);
-
 
     return (
         <div className={`${styles.wrapper}`}>
